@@ -27,8 +27,8 @@ colnames(data) <- features[,2]  #The name is in the second column
 
 #The following is actually step 2 in the assignment:  Extract only the mean() and std() measurements
 #Get the mean and standard deviation columns
-meanCols <- grep("mean()", names(data))
-stdCols <- grep("std()", names(data))
+meanCols <- grep("mean\\(\\)", names(data))
+stdCols <- grep("std\\(\\)", names(data))
 meanstdCols <- sort(c(meanCols, stdCols))
 #Generate a new data frame with only mean and standard deviation columns
 meanstd_data <- data[, meanstdCols]
