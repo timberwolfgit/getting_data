@@ -22,7 +22,7 @@ activity[,1] <- mapvalues(activity[,1], from = 1:6, to = as.character(activity_l
 
 #Read the features.  Each row corresponds to a feature name
 features <-read.table("UCI_HAR_Dataset/features.txt")
-#Step 4: Appropriately label the data set with descriptive variable names (i.e. feature names)
+#Label the data set with feature names for easier search of "mean" and "std" columns
 colnames(data) <- features[,2]  #The name is in the second column
 
 #The following is actually step 2 in the assignment:  Extract only the mean() and std() measurements
@@ -39,3 +39,13 @@ meanstd_dataMelt <- melt(meanstd_data,id=c("subject", "activity"))
 #Calculate the mean of each subject's activity for the chosen variables
 tidyData <- dcast(meanstd_dataMelt, activity + subject ~ variable,mean)
 
+#Step 4: Labels the data set with descriptive variable names
+varNames <- sub("^t", "time", names(tidyData) )
+varNames <- sub("^f", "freq", varNames )
+varNames <- sub("Acc", "Accelerometer", varNames )
+varNames <- sub("Gyro", "Gyroscope", varNames )
+varNames <- sub("Mag", "Magnitude", varNames )
+varNames <- sub("BodyBody", "Body", varNames )  #Fix a typo in the original feature names
+varNames <- sub("-mean\\(\\)", "AverageMean", varNames )
+varNames <- sub("-std\\(\\)", "AverageStdDeviation", varNames )
+names(tidyData) <- varNames
