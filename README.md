@@ -21,14 +21,16 @@ The training_Y/test_Y contains the activity the experiment subjects were doing w
 3. Then the data are merged using rbind into a single data frame combining the training and test data.
 The subject are also merged into a single data frame. (Step 1 of course project)
 
-4. Now, the activity are labeled by descriptive acitivty labels (Step 3 of course project)
+4. Now, the activity are labeled by descriptive acitivty labels. (Step 3 of course project)
 
-5. The column names and activity/subject columns are added for descriptive variable names (Step 4 of course project)
+5. The column names and activity/subject columns are added from the names in features.txt.
 
 6. Now the mean and stddev are extracted (Step 2 of course project) and new data frame "meanstd_data" is created.
 
-7. Finally, the meanstd_data are melted and cast again to generate tidyData, grouped by activity and subject.
+7. The meanstd_data are melted and cast again to generate tidyData, grouped by activity and subject.
 The mean average is calculated for all the mean and standard deviation measurements each each acitvity/subject combination.
 
+8. The variables in tidyData are labelled with descriptive variable names. (Step 4 of course project)
+
 ## Cookbook
-Please refer to cookbook.txt
+Please refer to Cookbook.md
